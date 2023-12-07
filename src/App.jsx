@@ -20,7 +20,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
   // You can modify the data as per your requirement
  ]
 
-function App() {
+//  Defining 3 state variables for storing our data
+ 
+
+function SeatSelection() {
+ const[numSeats,setNumSeats] = useState(0);  // for showing the number of seats
+ const[selectedSeats,setSelectedSeats] = useState([]);   // for showing the number of selected seats
+ const[BookedSeats,setBookedSeats] = useState([]);       // for showing the booked seats after successfull submit
+ const[seats,setSeats] = useState(seatsData);           // storing all the dummy json data
   
 
   return (
@@ -30,4 +37,4 @@ function App() {
   )
 }
 
-export default App
+export default SeatSelection
