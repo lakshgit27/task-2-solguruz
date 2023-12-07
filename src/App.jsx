@@ -36,7 +36,29 @@ function SeatSelection() {
            if(storedSeatsData){
             setSeats(storedSeatsData);
            }
- })
+ },[]);
+
+//  Now, after mapping the items , both the methods declared over there has been defined here
+
+ const handleInputChange = (e)=>{
+  setNumSeats(parseInt(e.target.value));
+ };
+
+const toggleSeatSelection = (seatId)=>{
+  const updatedSeats =seats.map((seat)=>{
+    if(
+      seat.id ===seatId && 
+      !seat.booked && selectedSeats.length< numSeats
+    ) {
+      return {...seat,booked:!seat.booked}
+    }
+    return seat;
+
+  });
+  // Assigning all the values to my data state - setSeats
+  setSeats(updatedSeats);
+  localStorage.setItem("seatsData", JSON.stringify(updatedSeats))
+};
   
 
   return (
@@ -47,7 +69,7 @@ function SeatSelection() {
       <form>
        <div className="input-group mb-3">
         <label htmlFor="numSeats"></label>
-        <input type="number" id="numSeats" name="numSeats" value={numSeats} className="form-control"
+        <input type="number" id="numSeats" name="numSeats" value={numSeats} onChange={handleInputChange} className="form-control"
             placeholder="Enter No. of Seats"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"></input>
@@ -73,6 +95,7 @@ function SeatSelection() {
           </div>
 
         </div>
+        {/* Now, below has done mapping of the seating data and using ternary operator done the work. Additionally, attached an onclick handler with name {toggleSeatSelection} which will be defined above*/}
         <div className="seatsMap">
           {
             seats.map((seat)=>{
