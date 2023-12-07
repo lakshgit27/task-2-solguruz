@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     path: "/App",
     element: <App/>,
   },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

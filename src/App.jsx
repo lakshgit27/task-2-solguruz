@@ -6,17 +6,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
           // the deault value of id-2 has set "true" , rest all are false
  const seatsData = [
   {id:1,seatNumber:"A1", booked:false},
-  {id:2,seatNumber:"A1", booked:true},
-  {id:3,seatNumber:"A1", booked:false},
-  {id:4,seatNumber:"A1", booked:false},
-  {id:5,seatNumber:"A1", booked:false},
-  {id:6,seatNumber:"A1", booked:false},
-  {id:7,seatNumber:"A1", booked:false},
-  {id:8,seatNumber:"A1", booked:false},
-  {id:9,seatNumber:"A1", booked:false},
-  {id:10,seatNumber:"A1", booked:false},
-  {id:11,seatNumber:"A1", booked:false},
-  {id:12,seatNumber:"A1", booked:false},
+  {id:2,seatNumber:"B1", booked:true},
+  {id:3,seatNumber:"C1", booked:false},
+  {id:4,seatNumber:"A2", booked:false},
+  {id:5,seatNumber:"B2", booked:false},
+  {id:6,seatNumber:"C2", booked:false},
+  {id:7,seatNumber:"A3", booked:false},
+  {id:8,seatNumber:"B3", booked:false},
+  {id:9,seatNumber:"C3", booked:false},
+  {id:10,seatNumber:"A4", booked:false},
+  {id:11,seatNumber:"B4", booked:false},
+  {id:12,seatNumber:"C4", booked:false},
   // You can modify the data as per your requirement
  ]
 
@@ -65,6 +65,13 @@ const toggleSeatSelection = (seatId)=>{
     e.preventDefault();
 
   };
+// After successfully submitting the data, displaying the data by - 
+const sumbiteddata = () =>{
+  let res = seats.filter((seat) => seat.booked)
+  .map((seat) => seat.id);
+  console.log(res);
+  setBookedSeats(res)
+}
   
 
   return (
@@ -102,13 +109,27 @@ const toggleSeatSelection = (seatId)=>{
 
         </div>
         {/* Now, below has done mapping of the seating data and using ternary operator done the work. Additionally, attached an onclick handler with name {toggleSeatSelection} which will be defined above*/}
-        <div className="seatsMap">
-          {
-            seats.map((seat)=>(
-              <div key={seat.id} className={`seat ${seat.booked ? "booked":selectedSeats.includes(seat.id) ? "selected": "available"}`}
-              onClick={()=>{toggleSeatSelection(seat.id)}}>{seat.seatNumber}</div>
-            ))
-          }
+        <div className="seatMa">
+          {/* {JSON.stringify(seats)} */}
+          {seats.map((seat) => (
+            <>
+           
+              <div
+                key={seat.id}
+                className={`seat ${
+                  seat.booked
+                    ? "booked"
+                    : selectedSeats.includes(seat.id)
+                    ? "selected"
+                    : "available"
+                }`}
+                onClick={() => toggleSeatSelection(seat.id)}
+              >
+                {seat.seatNumber}
+              </  div>
+              
+            </>
+          ))}
         </div>
         <div className="disp-flex">
         {BookedSeats.map((bseat) => (
@@ -121,7 +142,8 @@ const toggleSeatSelection = (seatId)=>{
           ))}
         </div>
         <div className="Submit-button">
-          
+          <button className="submitted" onClick={sumbiteddata}>Submit</button>
+
         </div>
       </div>
 
