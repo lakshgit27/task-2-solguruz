@@ -41,6 +41,26 @@ function SeatSelection() {
 
   return (
     <>
+    <div>
+      <h1 className="selectedseating">Seat Selection Task</h1>
+      <form>
+       <div className="input-group mb-3">
+        <label htmlFor="numSeats"></label>
+        <input type="number" id="numSeats" name="numSeats" value={numSeats} className="form-control"
+            placeholder="Enter No. of Seats"
+            aria-label="Recipient's username"
+            aria-describedby="button-addon2"></input>
+            <input
+            type="submit"
+            className="btn btn-outline-secondary"
+            id="button-addon2"
+          />
+
+        </div>
+
+      </form>
+
+    </div>
       
     </>
   )
