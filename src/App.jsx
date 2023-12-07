@@ -28,6 +28,15 @@ function SeatSelection() {
  const[selectedSeats,setSelectedSeats] = useState([]);   // for showing the number of selected seats
  const[BookedSeats,setBookedSeats] = useState([]);       // for showing the booked seats after successfull submit
  const[seats,setSeats] = useState(seatsData);           // storing all the dummy json data
+
+
+ useEffect(()=>{
+  //  For storing the dummy data in the local storage we're using the useEffect hook.
+        const storedSeatsData = JSON.parse(localStorage.getItem("seatsData"));
+           if(storedSeatsData){
+            setSeats(storedSeatsData);
+           }
+ })
   
 
   return (
