@@ -73,6 +73,15 @@ function SeatSelection() {
           </div>
 
         </div>
+        <div className="seatsMap">
+          {
+            seats.map((seat)=>{
+              <div key={seat.id} className={`seat ${seat.booked ? "booked":selectedSeats.includes(seat.id) ? "selected": "available"}`}
+              onClick={()=>{toggleSeatSelection(seat.id)}}>{seat.seatNumber}</div>
+
+            })
+          }
+        </div>
       </div>
 
     </div>
