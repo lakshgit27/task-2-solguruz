@@ -42,6 +42,7 @@ function SeatSelection() {
   return (
     <>
     <div>
+      {/* Created an form with input as number (seats) and submit button to confirm the seats, the decoration has been done with bootstrap */}
       <h1 className="selectedseating">Seat Selection Task</h1>
       <form>
        <div className="input-group mb-3">
@@ -59,6 +60,20 @@ function SeatSelection() {
         </div>
 
       </form>
+      <div className="main-container">
+        <div className="legends">
+        <div className="seat" id="selected">
+            Selected
+          </div>
+          <div className="seat" id="booked">
+            Booked
+          </div>
+          <div className="seat" id="available">
+            Available
+          </div>
+
+        </div>
+      </div>
 
     </div>
       

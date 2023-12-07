@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
+import Form from './Component/Form.jsx';
 import {
   createBrowserRouter,
-  Form,
   RouterProvider,
 } from "react-router-dom";
 
