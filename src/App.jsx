@@ -59,6 +59,12 @@ const toggleSeatSelection = (seatId)=>{
   setSeats(updatedSeats);
   localStorage.setItem("seatsData", JSON.stringify(updatedSeats))
 };
+
+// Form Submission method 
+  const handleFormSubmit=(e)=>{
+    e.preventDefault();
+
+  };
   
 
   return (
@@ -66,7 +72,7 @@ const toggleSeatSelection = (seatId)=>{
     <div>
       {/* Created an form with input as number (seats) and submit button to confirm the seats, the decoration has been done with bootstrap */}
       <h1 className="selectedseating">Seat Selection Task</h1>
-      <form>
+      <form onSubmit={handleFormSubmit}>
        <div className="input-group mb-3">
         <label htmlFor="numSeats"></label>
         <input type="number" id="numSeats" name="numSeats" value={numSeats} onChange={handleInputChange} className="form-control"
@@ -98,12 +104,24 @@ const toggleSeatSelection = (seatId)=>{
         {/* Now, below has done mapping of the seating data and using ternary operator done the work. Additionally, attached an onclick handler with name {toggleSeatSelection} which will be defined above*/}
         <div className="seatsMap">
           {
-            seats.map((seat)=>{
+            seats.map((seat)=>(
               <div key={seat.id} className={`seat ${seat.booked ? "booked":selectedSeats.includes(seat.id) ? "selected": "available"}`}
               onClick={()=>{toggleSeatSelection(seat.id)}}>{seat.seatNumber}</div>
-
-            })
+            ))
           }
+        </div>
+        <div className="disp-flex">
+        {BookedSeats.map((bseat) => (
+            <>
+            
+              <div key={bseat.id} className=" box"  >
+                {bseat}
+              </div>
+            </>
+          ))}
+        </div>
+        <div className="Submit-button">
+          
         </div>
       </div>
 
